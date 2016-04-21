@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# 
+# tournament.py -- implementation of a Swiss-system tournament
+#
+
 import psycopg2
 
 
