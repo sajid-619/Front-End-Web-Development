@@ -98,7 +98,62 @@ $(".education-entry:last").append(formattedURL);
 
 education.display();
 
+var work = {
+  "jobs": [
+    {
+      "employer": "Pizza Hut",
+      "title": "Waiter",
+      "dates": "May 2014 - August 2014",
+      "description": "Serving food and taking orders"
+    },
+    
+    {
+      "employer": "Independent University Bangladesh",
+      "title": "Teacher's Assistant",
+      "dates": "January 2016 - Present",
+      "description": "Instructing teachers about questions, exams and syllabus"
+    }
+     ]
+}
 
+//Display work json in resume object
+function displayWork() {
+
+for(job in work.jobs){
+
+$("#workExperience").append(HTMLworkStart);
+
+var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+var formattedEmployerTitle = formattedEmployer + formattedTitle;
+$(".work-entry:last").append(formattedEmployerTitle);
+
+var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+$(".work-entry:last").append(formattedDates);
+
+var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+$(".work-entry:last").append(formattedDescription);
+
+};
+
+};
+
+displayWork();
+
+
+function locationizer(work_obj) {
+    var locationArray = [];
+
+    for (job in work_obj.jobs) {
+        var newLocation = work_obj.jobs[job].location;
+        locationArray.push(newLocation);
+    }
+ 
+    return locationArray;
+}
+
+
+console.log(locationizer(work));
 
 function inName(nameString){
 var nameArray = nameString.split(" ");
